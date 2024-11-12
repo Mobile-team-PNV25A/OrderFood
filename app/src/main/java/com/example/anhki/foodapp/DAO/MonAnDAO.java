@@ -31,6 +31,15 @@ public class MonAnDAO {
         return kiemtra != 0;
     }
 
+    public boolean XoaMonAn(int MaMonAn) {
+        // Thực hiện xóa món ăn trong cơ sở dữ liệu theo MaMonAn
+        int kiemtra = database.delete(CreateDatabase.TB_MONAN, CreateDatabase.TB_MONAN_MAMON + " = ?", new String[]{String.valueOf(MaMonAn)});
+
+        // Nếu xóa thành công, `kiemtra` sẽ trả về số dòng bị ảnh hưởng (>= 1), nếu thất bại trả về 0
+        return kiemtra != 0;
+    }
+
+
     @SuppressLint("Recycle")
     public List<MonAnDTO> LayDanhSachMonAnTheoLoai(int maloai){
         List<MonAnDTO> monAnDTOs = new ArrayList<MonAnDTO>();
